@@ -1,38 +1,39 @@
 ﻿using System;
-
+using static System.Console;
+using static System.Convert;
 namespace test
 {
     class Program
     {
-        static void add(out int i,ref int k){
-            int j = 3;
-            i = j;
-            k+=3;
-
+        public static Boolean isOdd(int i)
+        {
+            if (i % 2 == 1)
+                return true;
+            else
+                return false;
         }
-
-        static (int max,int min,double avg) avge(params int[] array){
-            int sum = 0;
-            int max = array[0];
-            int min = array[0];
-            foreach(int i in array){
-                if(i>max)
-                max = i;
-                if(i<min)
-                min = i;
-                sum += i;
-            }
-            double avg = sum/array.Length;
-            return (max,min,avg);
+        public static Boolean isOdd1(int i)
+        {
+            return (i % 2 == 1 || i % 2 == -1);
+        }
+        public static Boolean isOdd2(int i)
+        {
+            return (i % 2 != 0);
+        }
+        public static Boolean isOdd3(int i)
+        {
+            return (i >> 1 << 1 != i);
+        }
+        public static Boolean isOdd4(int i)
+        {
+            return (i & 1) == 1;
         }
         static void Main(string[] args)
         {
-            int i;
-            int k = 0;
-            add(out i ,ref k);
-            (int max,int min,double avg ) = avge(1,2,3,4,5,6);
-            Console.WriteLine($"value of i = {i}\nvalue of k = {k}");
-            Console.Write($"max = {max}\nmin = {min}\navg = {avg}");
+            WriteLine("input:");
+            string s = ReadLine();
+            int i = ToInt32(s);
+            WriteLine($"{isOdd4(i)}");
         }
     }
 }
