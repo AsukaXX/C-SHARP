@@ -25,7 +25,6 @@ namespace unit7
                     case "error":
                         Trace.Write(s, "throw");
                         throw new Exception();
-                        break;
                     case "end":
                         Trace.Write(s, "no throw");
                         break;
