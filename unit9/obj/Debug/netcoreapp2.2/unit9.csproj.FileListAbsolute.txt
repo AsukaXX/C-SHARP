@@ -1,0 +1,11 @@
+D:\git\c-\unit9\bin\Debug\netcoreapp2.2\unit9.deps.json
+D:\git\c-\unit9\bin\Debug\netcoreapp2.2\unit9.runtimeconfig.json
+D:\git\c-\unit9\bin\Debug\netcoreapp2.2\unit9.runtimeconfig.dev.json
+D:\git\c-\unit9\bin\Debug\netcoreapp2.2\unit9.dll
+D:\git\c-\unit9\bin\Debug\netcoreapp2.2\unit9.pdb
+D:\git\c-\unit9\obj\Debug\netcoreapp2.2\unit9.csprojAssemblyReference.cache
+D:\git\c-\unit9\obj\Debug\netcoreapp2.2\unit9.csproj.CoreCompileInputs.cache
+D:\git\c-\unit9\obj\Debug\netcoreapp2.2\unit9.AssemblyInfoInputs.cache
+D:\git\c-\unit9\obj\Debug\netcoreapp2.2\unit9.AssemblyInfo.cs
+D:\git\c-\unit9\obj\Debug\netcoreapp2.2\unit9.dll
+D:\git\c-\unit9\obj\Debug\netcoreapp2.2\unit9.pdb
