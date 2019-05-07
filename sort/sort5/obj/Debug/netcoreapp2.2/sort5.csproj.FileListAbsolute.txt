@@ -1,0 +1,11 @@
+D:\git\c-\sort\sort5\bin\Debug\netcoreapp2.2\sort5.deps.json
+D:\git\c-\sort\sort5\bin\Debug\netcoreapp2.2\sort5.runtimeconfig.json
+D:\git\c-\sort\sort5\bin\Debug\netcoreapp2.2\sort5.runtimeconfig.dev.json
+D:\git\c-\sort\sort5\bin\Debug\netcoreapp2.2\sort5.dll
+D:\git\c-\sort\sort5\bin\Debug\netcoreapp2.2\sort5.pdb
+D:\git\c-\sort\sort5\obj\Debug\netcoreapp2.2\sort5.csprojAssemblyReference.cache
+D:\git\c-\sort\sort5\obj\Debug\netcoreapp2.2\sort5.csproj.CoreCompileInputs.cache
+D:\git\c-\sort\sort5\obj\Debug\netcoreapp2.2\sort5.AssemblyInfoInputs.cache
+D:\git\c-\sort\sort5\obj\Debug\netcoreapp2.2\sort5.AssemblyInfo.cs
+D:\git\c-\sort\sort5\obj\Debug\netcoreapp2.2\sort5.dll
+D:\git\c-\sort\sort5\obj\Debug\netcoreapp2.2\sort5.pdb
