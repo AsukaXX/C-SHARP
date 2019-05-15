@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace unit11_1
 {
-    public class Crads : CollectionBase
+    public class Cards : CollectionBase, ICloneable
     {
         public void Add(Card newCrad) => List.Add(newCrad);
         public void Remove(Card oldCrad) => List.Remove(oldCrad);
@@ -16,7 +16,7 @@ namespace unit11_1
             get { return (Card)List[cardIndex]; }
             set { List[cardIndex] = value; }
         }
-        public void CopyTo(Crads targetCards)
+        public void CopyTo(Cards targetCards)
         {
             for (int index = 0; index < this.Count; index++)
             {
@@ -24,5 +24,14 @@ namespace unit11_1
             }
         }
         public bool Contains(Card card) => InnerList.Contains(card);
+        public object Clone()
+        {
+            Cards newCards = new Cards();
+            foreach (Card sourceCard in List)
+            {
+                newCards.Add((Card)sourceCard.Clone());
+            }
+            return newCards;
+        }
     }
 }

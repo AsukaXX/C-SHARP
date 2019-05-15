@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace unit11_1
 {
-    public class Deck
+    public class Deck : ICloneable
     {
-        private Crads cards = new Crads();
+        private Cards cards = new Cards();
         public Deck()
         {
             for (int suitVal = 0; suitVal < 4; suitVal++)
@@ -19,6 +19,21 @@ namespace unit11_1
                 }
             }
         }
+        public Deck(bool isAceHigh) : this()
+        {
+            Card.isAceHigh = isAceHigh;
+        }
+        public Deck(bool userTrumps, Suit trump) : this()
+        {
+            Card.userTrumps = userTrumps;
+            Card.trump = trump;
+        }
+        public Deck(bool isAceHigh, bool userTrumps, Suit trump) : this()
+        {
+            Card.isAceHigh = isAceHigh;
+            Card.userTrumps = userTrumps;
+            Card.trump = trump;
+        }
         public Card GetCard(int cardNum)
         {
             if (cardNum >= 0 && cardNum <= 51)
@@ -28,7 +43,7 @@ namespace unit11_1
         }
         public void Shuffle()
         {
-            Crads newDecks = new Crads();
+            Cards newDecks = new Cards();
             bool[] assigned = new bool[52];
             Random sourceGen = new Random();
             for (int i = 0; i < 52; i++)
@@ -45,6 +60,12 @@ namespace unit11_1
                 newDecks.Add(cards[sourceCard]);
             }
             newDecks.CopyTo(cards);
+        }
+        private Deck(Cards newCards) => cards = newCards;
+        public object Clone()
+        {
+            Deck newDeck = new Deck(cards.Clone() as Cards);
+            return newDeck;
         }
 
     }
