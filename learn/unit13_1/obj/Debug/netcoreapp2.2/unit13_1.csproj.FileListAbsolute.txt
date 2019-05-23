@@ -1,0 +1,11 @@
+D:\git\c-\learn\unit13_1\bin\Debug\netcoreapp2.2\unit13_1.deps.json
+D:\git\c-\learn\unit13_1\bin\Debug\netcoreapp2.2\unit13_1.runtimeconfig.json
+D:\git\c-\learn\unit13_1\bin\Debug\netcoreapp2.2\unit13_1.runtimeconfig.dev.json
+D:\git\c-\learn\unit13_1\bin\Debug\netcoreapp2.2\unit13_1.dll
+D:\git\c-\learn\unit13_1\bin\Debug\netcoreapp2.2\unit13_1.pdb
+D:\git\c-\learn\unit13_1\obj\Debug\netcoreapp2.2\unit13_1.csprojAssemblyReference.cache
+D:\git\c-\learn\unit13_1\obj\Debug\netcoreapp2.2\unit13_1.csproj.CoreCompileInputs.cache
+D:\git\c-\learn\unit13_1\obj\Debug\netcoreapp2.2\unit13_1.AssemblyInfoInputs.cache
+D:\git\c-\learn\unit13_1\obj\Debug\netcoreapp2.2\unit13_1.AssemblyInfo.cs
+D:\git\c-\learn\unit13_1\obj\Debug\netcoreapp2.2\unit13_1.dll
+D:\git\c-\learn\unit13_1\obj\Debug\netcoreapp2.2\unit13_1.pdb
