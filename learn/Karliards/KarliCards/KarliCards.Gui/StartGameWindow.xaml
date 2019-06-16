@@ -1,0 +1,34 @@
+﻿<Window x:Class="KarliCards.Gui.StartGameWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KarliCards.Gui"
+        mc:Ignorable="d"
+        Title="Start New Game" Height="345" Width="445" ResizeMode="NoResize">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="58"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition/>
+            <RowDefinition Height="42"/>
+        </Grid.RowDefinitions>
+        <Canvas Grid.Row="0" Background="#C40D42">
+            <Image Height="56" Canvas.Left="0" Canvas.Top="0" Stretch="UniformToFill" Source="./Images/Banner.png"></Image>
+            <Label Canvas.Right="10" Canvas.Top="13" Content="New Game" Foreground="#FFF7EFEF" FontFamily="Times New Roman" FontSize="24" FontWeight="Bold"></Label>
+        </Canvas>
+        <Canvas Grid.Row="1" Background="Black">
+            <ListBox Name="playerNamesListBox" ItemsSource="{Binding Path=PlayerNames}" SelectionChanged="playerNamesListBox_SelectionChanged"
+                     HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Top="52" Canvas.Left="10" Height="150" Width="234" />
+            <Label Content="Players" Canvas.Top="25" Canvas.Left="10"/>
+            <Label Content="New Player" Canvas.Top="25" Canvas.Right="100"/>
+            <TextBox Name="newPlayerTextBox" Canvas.Top="52" Height="20" Width="160" Canvas.Left="264"></TextBox>
+            <Button Name="addNewPlyerButton" Content="Add" HorizontalAlignment="Right" VerticalContentAlignment="Bottom" Canvas.Left="370" Canvas.Top="86" Width="51" Click="addNewPlyerButton_Click" />
+        </Canvas>
+        <StackPanel Grid.Row="3" Orientation="Horizontal" FlowDirection="RightToLeft">
+            <Button Content="_Cancel" Height="22" Width="75" Margin="10,0,0,0" Name="cacelButton" Click="cancelButton_Click"/>
+            <Button Content="_OK" Height="22" Width="75" Margin="10,0,0,0" Name="okButton" Click="okButton_Click" IsEnabled="False"/>
+        </StackPanel>
+
+    </Grid>
+</Window>

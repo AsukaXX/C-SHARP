@@ -42,7 +42,7 @@
         </Canvas>
         <StackPanel Grid.Row="3" Orientation="Horizontal" FlowDirection="RightToLeft">
             <Button Content="_Cancel" Height="22" Width="75" Margin="10,0,0,0" Name="cacelButton" Click="cancelButton_Click"/>
-            <Button Content="_OK" Height="22" Width="75" Margin="10,0,0,0" Name="pkButton" Click="okButton_Click"/>
+            <Button Content="_OK" Height="22" Width="75" Margin="10,0,0,0" Name="okButton" Click="okButton_Click"/>
         </StackPanel>
         
     </Grid>
