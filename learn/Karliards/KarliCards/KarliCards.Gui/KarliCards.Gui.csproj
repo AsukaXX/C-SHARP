@@ -55,10 +55,21 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="GameClientWindow.xaml.cs">
+      <DependentUpon>GameClientWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="StartGameWindow.xaml.cs">
       <DependentUpon>StartGameWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="AboutWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ControlResources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GameClientWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -6,6 +6,13 @@
         xmlns:local="clr-namespace:KarliCards.Gui"
         mc:Ignorable="d"
         Title="Start New Game" Height="345" Width="445" ResizeMode="NoResize">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ControlResources.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="58"/>
@@ -13,10 +20,11 @@
             <RowDefinition/>
             <RowDefinition Height="42"/>
         </Grid.RowDefinitions>
-        <Canvas Grid.Row="0" Background="#C40D42">
-            <Image Height="56" Canvas.Left="0" Canvas.Top="0" Stretch="UniformToFill" Source="./Images/Banner.png"></Image>
-            <Label Canvas.Right="10" Canvas.Top="13" Content="New Game" Foreground="#FFF7EFEF" FontFamily="Times New Roman" FontSize="24" FontWeight="Bold"></Label>
-        </Canvas>
+        <!--<canvas grid.row="0" background="#c40d42">
+            <image height="56" canvas.left="0" canvas.top="0" stretch="uniformtofill" source="./images/banner.png"></image>
+            <label canvas.right="10" canvas.top="13" content="new game" foreground="#fff7efef" fontfamily="times new roman" fontsize="24" fontweight="bold"></label>
+        </canvas>-->
+        <Label Grid.Row="0" Style="{StaticResource HeaderLabelStyle}">New Game</Label>
         <Canvas Grid.Row="1" Background="Black">
             <ListBox Name="playerNamesListBox" ItemsSource="{Binding Path=PlayerNames}" SelectionChanged="playerNamesListBox_SelectionChanged"
                      HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Top="52" Canvas.Left="10" Height="150" Width="234" />
