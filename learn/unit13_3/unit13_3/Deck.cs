@@ -10,6 +10,7 @@ namespace unit13_3
     {
         public event EventHandler LastCardDrawn;
         private Cards cards = new Cards();
+        private Deck(Cards newCards) { cards = newCards; }  
         public Deck()
         {
             for (int suitVal = 0; suitVal < 4; suitVal++)
@@ -66,7 +67,7 @@ namespace unit13_3
             }
             newDecks.CopyTo(cards);
         }
-        private Deck(Cards newCards) => cards = newCards;
+        
         public object Clone()
         {
             Deck newDeck = new Deck(cards.Clone() as Cards);
