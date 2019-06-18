@@ -10,7 +10,7 @@ namespace unit13_3
     {
         public event EventHandler LastCardDrawn;
         private Cards cards = new Cards();
-        private Deck(Cards newCards) { cards = newCards; }  
+        private Deck(Cards newCards) => cards = newCards; 
         public Deck()
         {
             for (int suitVal = 0; suitVal < 4; suitVal++)

@@ -16,11 +16,11 @@ namespace KarliCards.Gui
                 {
                     case 1:
                         return "Ace";
-                    case 2:
+                    case 11:
                         return "Jack";
-                    case 3:
+                    case 12:
                         return "Queen";
-                    case 4:
+                    case 13:
                         return "King";
                     default:
                         return DependencyProperty.UnsetValue;
