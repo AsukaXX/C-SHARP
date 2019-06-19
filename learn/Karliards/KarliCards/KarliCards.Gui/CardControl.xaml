@@ -7,12 +7,15 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300" Height="154" Width="100" Name="UserControl">
     <UserControl.Resources>
+        <!--类实例-->
         <local:RankNameConverter x:Key="rankConverter"/>
+        <!--修改控件的可视化外观，还可用于呈现控件的底层数据-->
         <DataTemplate x:Key="SuitTemplate">
             <TextBlock Text="{Binding}"/>
         </DataTemplate>
         <Style TargetType="Image" x:Key="SuitImage">
             <Style.Triggers>
+                <!--触发器，根据值不同，将Source设置为相应的图片-->
                 <DataTrigger Binding="{Binding ElementName=UserControl,Path=Suit}" Value="Club">
                     <Setter Property="Source" Value="Images\Clubs.png"/>
                 </DataTrigger>
@@ -28,18 +31,24 @@
             </Style.Triggers>
         </Style>
     </UserControl.Resources>
+    <!--纸牌的绘制-->
     <Grid>
+        <!--在矩形内部用椭圆来显示圆角-->
         <Rectangle RadiusX="12.5" RadiusY="12.5">
             <Rectangle.Fill>
+                <!--给矩形填充颜色-->
                 <LinearGradientBrush EndPoint="0.47,-0.167" StartPoint="0.86,0.92">
                     <GradientStop Color="#FFD1C78F" Offset="0"/>
                     <GradientStop Color="#FFFFFFFF" Offset="1"/>
                 </LinearGradientBrush>
             </Rectangle.Fill>
+            <!--控件周围绘制阴影-->
             <Rectangle.Effect>
                 <DropShadowEffect Direction="145" BlurRadius="10" ShadowDepth="0"/>
             </Rectangle.Effect>
         </Rectangle>
+        <!--使用直线和曲线绘制多边形-->
+        <!--Data M表示该路径的起点，m表示相对于前一个点的偏移量，L表示创建一条直线，C表示Cubic Bezier曲线，z必须闭合该多边形-->
         <Path Fill="#FFFFFFFF" Stretch="Fill" Stroke="{x:Null}" Margin="0,0,35,0" Data="M12,0 L47,0 C18,25 17,81 23,98 35,131 54,144 
               63,149 L12,149 C3,149 0,143 0,136 L0,12 C0,5 3,0 12,0 z">
             <Path.OpacityMask>
@@ -49,8 +58,10 @@
                 </LinearGradientBrush>
             </Path.OpacityMask>
         </Path>
+        <!--设置牌面花色显示-->
         <Label x:Name="SuitLable" Content="{Binding Path=Suit,ElementName=UserControl,Mode=Default}" ContentTemplate="{DynamicResource SuitTemplate}"
                HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8,51,8,60"/>
+        <!--设置左上和右下的牌面数值显示，ZIndex设置该控件在控件中堆叠的层级，定义转换器-->
         <Label x:Name="RankLable" Grid.ZIndex="1" Content="{Binding Path=Rank,ElementName=UserControl,Mode=Default,
             Converter={StaticResource ResourceKey=rankConverter}}"
                ContentTemplate="{DynamicResource SuitTemplate}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="8,8,0,0"/>
@@ -61,6 +72,7 @@
                 <RotateTransform Angle="180"/>
             </Label.RenderTransform>
         </Label>
+        <!--设置牌面花色图片的显示-->
         <Image Name="TopRightImage" Style="{StaticResource ResourceKey=SuitImage}" Margin="12,12,8,0" HorizontalAlignment="Right"
                VerticalAlignment="Top" Width="18.5" Height="18.5" Stretch="UniformToFill"/>
         <Image Name="BottomLeftImage" Style="{StaticResource ResourceKey=SuitImage}" Margin="12,0,8,12" HorizontalAlignment="Left"

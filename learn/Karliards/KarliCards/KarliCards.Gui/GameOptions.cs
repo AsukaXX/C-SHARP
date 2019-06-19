@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using unit13_3;
 
 namespace KarliCards.Gui
 {
@@ -64,13 +65,5 @@ namespace KarliCards.Gui
         {
             PropertyChanged?.Invoke(this,new PropertyChangedEventArgs(propertyName));
         }
-    }
-
-    [Serializable]
-    public enum ComputerSkillLevel
-    {
-        Dumb,
-        Good,
-        Cheats
     }
 }

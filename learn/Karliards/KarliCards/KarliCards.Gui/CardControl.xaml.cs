@@ -50,11 +50,13 @@ namespace KarliCards.Gui
             get { return card; }
             set { card = value;Suit = card.suit;Rank = card.rank; }
         }
+        //当Suit值发生变化时，更改文字颜色
         public static void OnSuitChanged(DependencyObject soure,DependencyPropertyChangedEventArgs args)
         {
             var control = soure as CardControl;
-            control.setTextColor();
+            control.SetTextColor();
         }
+        //当IsFaceUp值发生变化时，显示或隐藏控件当前的图片和标签
         public static void OnIsFaceUpChanged(DependencyObject source,DependencyPropertyChangedEventArgs args)
         {
             var control = source as CardControl;
@@ -67,7 +69,7 @@ namespace KarliCards.Gui
             InitializeComponent();
             Card = card;
         }
-        private void setTextColor()
+        private void SetTextColor()
         {
             var color = (Suit == unit13_3.Suit.Club || Suit == unit13_3.Suit.Spade) ?
                 new SolidColorBrush(Color.FromRgb(0, 0, 0)) :

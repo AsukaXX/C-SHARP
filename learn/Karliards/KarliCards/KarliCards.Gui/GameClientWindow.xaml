@@ -13,6 +13,10 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
+    <Window.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.Close" CanExecute="CommandCanExecuted" Executed="CommandExecuted"/>
+        <CommandBinding Command="ApplicationCommands.Save" CanExecute="CommandCanExecuted" Executed="CommandExecuted"/>
+    </Window.CommandBindings>
     <Grid Background="Green">
         <Grid.RowDefinitions>
             <RowDefinition Height="58"/>
@@ -21,6 +25,28 @@
             <RowDefinition Height="42"/>
         </Grid.RowDefinitions>
         <Label Grid.Row="0" Style="{StaticResource HeaderLabelStyle}">Karli Cards</Label>
+        <Menu Grid.Row="1" Margin="0" Style="{StaticResource MainMenuStyle}">
+            <MenuItem Header="_File" Style="{StaticResource MainMenuItemStyle}">
+                <MenuItem Header="_New Game" Style="{StaticResource MainMenuSubMenuItemStyle}"/>
+                <MenuItem Header="_Open" Style="{StaticResource MainMenuSubMenuItemStyle}"/>
+                <MenuItem Header="_Save" Style="{StaticResource MainMenuSubMenuItemStyle}" Command="Save">
+                    <MenuItem.Icon>
+                        <Image Source="Images\base_floppydisk_32.png" Width="20"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <Separator Style="{StaticResource MenuItemSeperatorStyle}"/>
+                <MenuItem Header="_Close" Style="{StaticResource MainMenuSubMenuItemStyle}" Command="Close"/>
+            </MenuItem>
+            <MenuItem Header="_Game" Style="{StaticResource MainMenuItemStyle}">
+                <MenuItem Header="_Undo" Style="{StaticResource MainMenuSubMenuItemStyle}"/>
+            </MenuItem>
+            <MenuItem Header="_Tool" Style="{StaticResource MainMenuItemStyle}">
+                <MenuItem Header="_Options" Style="{StaticResource MainMenuSubMenuItemStyle}"/>
+            </MenuItem>
+            <MenuItem Header="Help" Style="{StaticResource MainMenuItemStyle}">
+                <MenuItem Header="_About" Style="{StaticResource MainMenuSubMenuItemStyle}"/>
+            </MenuItem>
+        </Menu>
         <Grid x:Name="contentGrid" Grid.Row="2"/>
     </Grid>
 </Window>
