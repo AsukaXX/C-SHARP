@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace unit13_3
 {
-    class CardEventArgs
+    public class CardEventArgs
     {
         public Card Card { get; set; }
     }

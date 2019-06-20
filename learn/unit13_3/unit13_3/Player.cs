@@ -1,30 +1,60 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace unit13_3
 {
-    public class Player
+    [Serializable]
+    public class Player:INotifyPropertyChanged
     {
-        public string Nmae { get; private set; }
-        public Cards PlayHand { get; private set; }
-        private Player() { }
-        public Player(String name)
+        public int Index { get; set; }
+        protected Cards Hand { get; set; }
+        private string name;
+        private PlayerState state;
+        public event EventHandler<CardEventArgs> OnCardDiscarded;
+        public event EventHandler<PlayerEventArgs> OnPlayerHasWon;
+        public PlayerState State
         {
-            Nmae = name;
-            PlayHand = new Cards();
-        }
-        public bool HasWon()
-        {
-            bool won = true;
-            Suit match = PlayHand[0].suit;
-            for (int i = 1; i < PlayHand.Count; i++)
+            get { return state; }
+            set
             {
-                won &= PlayHand[i].suit == match;
+                state = value;
+                OnPropertyChanged(nameof(State));
             }
-            return won;
         }
+        public virtual string PlayerName
+        {
+            get { return name; }
+            set
+            {
+                name = value;
+                OnPropertyChanged(nameof(PlayerName));
+            }
+        }
+        public void AddCard(Card card)
+        {
+            Hand.Add(card);
+            if (Hand.Count > 7)
+                State = PlayerState.MustDiscard;
+        }
+        public void DrawCard(Deck deck)
+        {
+            AddCard(deck.Draw());
+        }
+        public void DiscardCard(Card card)
+        {
+            Hand.Remove(card);
+            if (HasWon)
+                OnPlayerHasWon?.Invoke(this, new PlayerEventArgs { Player = this, State = PlayerState.Winner });
+            OnCardDiscarded?.Invoke(this, new CardEventArgs { Card = card });
+        }
+        public bool HasWon => Hand.Count == 7 && Hand.Select(x => x.suit).Distinct().Count() == 1;
+        public Cards GetCards() => Hand.Clone() as Cards;
+        private void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+
+        public event PropertyChangedEventHandler PropertyChanged;
     }
 }
