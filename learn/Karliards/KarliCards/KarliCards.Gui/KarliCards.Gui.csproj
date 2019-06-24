@@ -62,6 +62,7 @@
     <Compile Include="GameClientWindow.xaml.cs">
       <DependentUpon>GameClientWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GameViewModel.cs" />
     <Compile Include="RankNameConverter.cs" />
     <Compile Include="StartGameWindow.xaml.cs">
       <DependentUpon>StartGameWindow.xaml</DependentUpon>

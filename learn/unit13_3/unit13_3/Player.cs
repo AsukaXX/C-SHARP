@@ -34,6 +34,7 @@ namespace unit13_3
                 OnPropertyChanged(nameof(PlayerName));
             }
         }
+        //³öÅÆ
         public void AddCard(Card card)
         {
             Hand.Add(card);
@@ -44,12 +45,19 @@ namespace unit13_3
         {
             AddCard(deck.Draw());
         }
+        //ÆúÅÆ
         public void DiscardCard(Card card)
         {
             Hand.Remove(card);
             if (HasWon)
                 OnPlayerHasWon?.Invoke(this, new PlayerEventArgs { Player = this, State = PlayerState.Winner });
             OnCardDiscarded?.Invoke(this, new CardEventArgs { Card = card });
+        }
+        public void DrawNewHand(Deck deck)
+        {
+            Hand = new Cards();
+            for (int i = 0; i < 7; i++)
+                Hand.Add(deck.Draw());
         }
         public bool HasWon => Hand.Count == 7 && Hand.Select(x => x.suit).Distinct().Count() == 1;
         public Cards GetCards() => Hand.Clone() as Cards;

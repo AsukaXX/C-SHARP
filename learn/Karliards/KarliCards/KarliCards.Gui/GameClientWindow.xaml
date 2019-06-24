@@ -6,6 +6,9 @@
         xmlns:local="clr-namespace:KarliCards.Gui"
         mc:Ignorable="d"
         Title="Karli Cards Game Client" WindowState="Maximized">
+    <Window.DataContext>
+        <local:GameViewModel/>
+    </Window.DataContext>
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -16,6 +19,9 @@
     <Window.CommandBindings>
         <CommandBinding Command="ApplicationCommands.Close" CanExecute="CommandCanExecuted" Executed="CommandExecuted"/>
         <CommandBinding Command="ApplicationCommands.Save" CanExecute="CommandCanExecuted" Executed="CommandExecuted"/>
+        <CommandBinding Command="local:GameViewModel.StartGameCommand" CanExecute="CommandCanExecuted" Executed="CommandExecuted"/>
+        <CommandBinding Command="local:GameViewModel.ShowAboutCommand" CanExecute="CommandCanExecuted" Executed="CommandExecuted"/>
+        <CommandBinding Command="local:GameOptions.OptionsCommand" CanExecute="CommandCanExecuted" Executed="CommandExecuted"/>
     </Window.CommandBindings>
     <Grid Background="Green">
         <Grid.RowDefinitions>
@@ -27,7 +33,7 @@
         <Label Grid.Row="0" Style="{StaticResource HeaderLabelStyle}">Karli Cards</Label>
         <Menu Grid.Row="1" Margin="0" Style="{StaticResource MainMenuStyle}">
             <MenuItem Header="_File" Style="{StaticResource MainMenuItemStyle}">
-                <MenuItem Header="_New Game" Style="{StaticResource MainMenuSubMenuItemStyle}"/>
+                <MenuItem Header="_New Game" Style="{StaticResource MainMenuSubMenuItemStyle}" Command="local:GameViewModel.StartGameCommand"/>
                 <MenuItem Header="_Open" Style="{StaticResource MainMenuSubMenuItemStyle}"/>
                 <MenuItem Header="_Save" Style="{StaticResource MainMenuSubMenuItemStyle}" Command="Save">
                     <MenuItem.Icon>
@@ -41,10 +47,10 @@
                 <MenuItem Header="_Undo" Style="{StaticResource MainMenuSubMenuItemStyle}"/>
             </MenuItem>
             <MenuItem Header="_Tool" Style="{StaticResource MainMenuItemStyle}">
-                <MenuItem Header="_Options" Style="{StaticResource MainMenuSubMenuItemStyle}"/>
+                <MenuItem Header="_Options" Style="{StaticResource MainMenuSubMenuItemStyle}" Command="local:GameOptions.OptionsCommand"/>
             </MenuItem>
             <MenuItem Header="Help" Style="{StaticResource MainMenuItemStyle}">
-                <MenuItem Header="_About" Style="{StaticResource MainMenuSubMenuItemStyle}"/>
+                <MenuItem Header="_About" Style="{StaticResource MainMenuSubMenuItemStyle}" Command="local:GameViewModel.ShowAboutCommand"/>
             </MenuItem>
         </Menu>
         <Grid x:Name="contentGrid" Grid.Row="2"/>

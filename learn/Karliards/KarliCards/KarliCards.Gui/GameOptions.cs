@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.IO;
+using System.Windows.Input;
+using System.Xml.Serialization;
 using unit13_3;
 
 namespace KarliCards.Gui
@@ -9,6 +12,8 @@ namespace KarliCards.Gui
     [Serializable]
     public class GameOptions
     {
+        public static RoutedCommand OptionsCommand = new RoutedCommand("Show Options", typeof(GameOptions)
+            , new InputGestureCollection(new List<InputGesture> { new KeyGesture(Key.O, ModifierKeys.Control) }));
         private bool playAgainstComputer = true;
         public bool PlayAgainstComputer
         {
@@ -34,7 +39,8 @@ namespace KarliCards.Gui
         public ComputerSkillLevel ComputerSkill
         {
             get { return computerSkill; }
-            set {
+            set
+            {
                 computerSkill = value;
                 OnPropertyChanged(nameof(ComputerSkill));
             }
@@ -63,7 +69,28 @@ namespace KarliCards.Gui
         }
         private void OnPropertyChanged(string propertyName)
         {
-            PropertyChanged?.Invoke(this,new PropertyChangedEventArgs(propertyName));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+        public void Save()
+        {
+            using (var stream = File.Open("GameOptions.xml", FileMode.Create))
+            {
+                var serializer = new XmlSerializer(typeof(GameOptions));
+                serializer.Serialize(stream, this);
+            }
+        }
+        public static GameOptions Create()
+        {
+            if (File.Exists("GameOptions.xml"))
+            {
+                using (var stream = File.OpenRead("GameOptions.xml"))
+                {
+                    var serializer = new XmlSerializer(typeof(GameOptions));
+                    return serializer.Deserialize(stream) as GameOptions;
+                }
+            }
+            else
+                return new GameOptions();
         }
     }
 }

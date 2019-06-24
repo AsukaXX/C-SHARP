@@ -1,17 +1,6 @@
-﻿using System;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using System.Xml.Serialization;
 
 namespace KarliCards.Gui
 {
@@ -23,7 +12,7 @@ namespace KarliCards.Gui
         private GameOptions gameOptions;
         public StartGameWindow()
         {
-            if (gameOptions == null)
+            /*if (gameOptions == null)
             {
                 if (File.Exists("GameOptions.xml"))
                 {
@@ -36,15 +25,20 @@ namespace KarliCards.Gui
                 else
                     gameOptions = new GameOptions();
             }
-            DataContext = gameOptions;
+            DataContext = gameOptions;*/
             InitializeComponent();
+            //ChangeListBoxOptions();
+            DataContextChanged += StartGame_DataContextChanged;
+        }
+
+        private void ChangeListBoxOptions()
+        {
             if (gameOptions.PlayAgainstComputer)
                 playerNamesListBox.SelectionMode = SelectionMode.Single;
             else
                 playerNamesListBox.SelectionMode = SelectionMode.Extended;
         }
 
-        
 
         private void playerNamesListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -62,7 +56,7 @@ namespace KarliCards.Gui
         }
         private void okButton_Click(object sender, RoutedEventArgs e)
         {
-            foreach(string item in playerNamesListBox.SelectedItems)
+            /*foreach (string item in playerNamesListBox.SelectedItems)
             {
                 gameOptions.SelectdPlayers.Add(item);
             }
@@ -71,13 +65,25 @@ namespace KarliCards.Gui
                 var serializer = new XmlSerializer(typeof(GameOptions));
                 serializer.Serialize(stream, gameOptions);
             }
-            Close();
+            Close();*/
+            var gameOptions = DataContext as GameOptions;
+            gameOptions.SelectdPlayers = new List<string>();
+            foreach (string item in playerNamesListBox.SelectedItems)
+            {
+                gameOptions.SelectdPlayers.Add(item);
+            }
+            this.DialogResult = true;
+            this.Close();
         }
-
         private void cancelButton_Click(object sender, RoutedEventArgs e)
         {
             gameOptions = null;
             Close();
+        }
+        void StartGame_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            gameOptions = DataContext as GameOptions;
+            ChangeListBoxOptions();
         }
     }
 }

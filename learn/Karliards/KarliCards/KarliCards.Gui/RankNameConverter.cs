@@ -4,10 +4,10 @@ using System.Windows.Data;
 
 namespace KarliCards.Gui
 {
-    [ValueConversion(typeof(unit13_3.Rank),typeof(string))]
-    public class RankNameConverter:IValueConverter
+    [ValueConversion(typeof(unit13_3.Rank), typeof(string))]
+    public class RankNameConverter : IValueConverter
     {
-        public object Convert(object value,Type targetType, object parameter,System.Globalization.CultureInfo culture)
+        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
             int source = (int)value;
             if (source == 1 || source > 10)
@@ -29,7 +29,7 @@ namespace KarliCards.Gui
             else
                 return source.ToString();
         }
-        public object ConvertBack(object value,Type targetType,object parameter ,System.Globalization.CultureInfo culure)
+        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culure)
         {
             return DependencyProperty.UnsetValue;
         }

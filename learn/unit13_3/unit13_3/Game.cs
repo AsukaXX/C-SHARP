@@ -134,7 +134,7 @@ namespace unit13_3
                     discardeCards.Add(playCard);
                     WriteLine($"Discarding: {playCard}");
                     WriteLine();
-                    GameWon = players[currentPlayer].HasWon();
+                    GameWon = players[currentPlayer].HasWon;
                     if (GameWon == true)
                         break;
                 }

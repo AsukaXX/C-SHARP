@@ -1,17 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace KarliCards.Gui
 {
@@ -48,16 +37,16 @@ namespace KarliCards.Gui
         public unit13_3.Card Card
         {
             get { return card; }
-            set { card = value;Suit = card.suit;Rank = card.rank; }
+            set { card = value; Suit = card.suit; Rank = card.rank; }
         }
         //当Suit值发生变化时，更改文字颜色
-        public static void OnSuitChanged(DependencyObject soure,DependencyPropertyChangedEventArgs args)
+        public static void OnSuitChanged(DependencyObject soure, DependencyPropertyChangedEventArgs args)
         {
             var control = soure as CardControl;
             control.SetTextColor();
         }
         //当IsFaceUp值发生变化时，显示或隐藏控件当前的图片和标签
-        public static void OnIsFaceUpChanged(DependencyObject source,DependencyPropertyChangedEventArgs args)
+        public static void OnIsFaceUpChanged(DependencyObject source, DependencyPropertyChangedEventArgs args)
         {
             var control = source as CardControl;
             control.RankLable.Visibility = control.SuitLable.Visibility = control.RankLabelInverted.Visibility =

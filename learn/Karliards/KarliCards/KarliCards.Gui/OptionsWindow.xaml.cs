@@ -1,18 +1,4 @@
-﻿using System;
-using System.IO;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using System.Xml.Serialization;
+﻿using System.Windows;
 using unit13_3;
 
 namespace KarliCards.Gui
@@ -25,7 +11,7 @@ namespace KarliCards.Gui
         private GameOptions gameOptions;
         public OptionsWindow()
         {
-            if (gameOptions == null)
+            /*if (gameOptions == null)
             {
                 if (File.Exists("GameOptions.xml")){
                     using (var stream = File.OpenRead("GameOptions.xml"))
@@ -35,7 +21,9 @@ namespace KarliCards.Gui
                     }
                 } else
                     gameOptions = new GameOptions();
-            }
+            }*/
+            gameOptions = GameOptions.Create();
+            DataContext = gameOptions;
             InitializeComponent();
         }
 
@@ -56,11 +44,14 @@ namespace KarliCards.Gui
 
         private void okButton_Click(object sender, RoutedEventArgs e)
         {
-            using (var stream = File.Open("GameOptions.xml", FileMode.Create))
+            /*using (var stream = File.Open("GameOptions.xml", FileMode.Create))
             {
                 var serializer = new XmlSerializer(typeof(GameOptions));
                 serializer.Serialize(stream, gameOptions);
             }
+            Close();*/
+            DialogResult = true;
+            gameOptions.Save();
             Close();
         }
 

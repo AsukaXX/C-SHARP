@@ -16,6 +16,7 @@ namespace unit13_3
         {
             InsertAllCards();
         }
+        //返回牌的数目
         public int CardsInDeck
         {
             get { return cards.Count; }
@@ -51,11 +52,13 @@ namespace unit13_3
             }
             newDecks.CopyTo(cards);
         }
+        //重新洗牌
         public void ReshuffleDiscarded(List<Card> cardsInPlay)
         {
             InsertAllCards(cardsInPlay);
             Shuffle();
         }
+        //摸牌
         public Card Draw()
         {
             if (cards.Count == 0)
@@ -64,6 +67,7 @@ namespace unit13_3
             cards.RemoveAt(0);
             return card;
         }
+        //摸牌
         public Card SelectCardOfSpecificSuit(Suit suit)
         {
             Card selectedCard = cards.FirstOrDefault(card => card?.suit == suit);
@@ -77,6 +81,7 @@ namespace unit13_3
             Deck newDeck = new Deck(cards.Clone() as Cards);
             return newDeck;
         }
+        //整理游戏中的牌
         private void InsertAllCards()
         {
             for(int suitVal = 0; suitVal < 4; suitVal++)
