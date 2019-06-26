@@ -65,7 +65,12 @@
     <Compile Include="GameClientWindow.xaml.cs">
       <DependentUpon>GameClientWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GameDecksControl.xaml.cs">
+      <DependentUpon>GameDecksControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GameViewModel.cs" />
+    <Compile Include="InversedBoolConverter.cs" />
+    <Compile Include="NumberOfPlayers.cs" />
     <Compile Include="RankNameConverter.cs" />
     <Compile Include="StartGameWindow.xaml.cs">
       <DependentUpon>StartGameWindow.xaml</DependentUpon>
@@ -87,6 +92,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="GameClientWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GameDecksControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

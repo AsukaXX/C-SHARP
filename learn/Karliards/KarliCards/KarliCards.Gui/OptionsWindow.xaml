@@ -6,6 +6,9 @@
         xmlns:local="clr-namespace:KarliCards.Gui"
         mc:Ignorable="d"
         Title="Options" Height="345" Width="434" ResizeMode="NoResize">
+    <Window.Resources>
+        <local:InversedBoolConverter x:Key="invertBool"/>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="58"/>
@@ -18,16 +21,19 @@
             <Label Canvas.Right="10" Canvas.Top="13" Content="Options" Foreground="#FFF7EFEF" FontFamily="Times New Roman" FontSize="24" FontWeight="Bold"></Label>
         </Canvas>
         <Canvas Grid.Row="1" Background="Black">
+            <Canvas.Resources>
+                <local:NumberOfPlayers x:Key="numberOfPlayersData"/>
+            </Canvas.Resources>
             <TabControl Grid.RowSpan="2" Canvas.Left="10" Canvas.Top="2" Width="408" Height="208" Grid.Row="1">
                 <TabItem Header="Game">
                     <Grid>
-                        <CheckBox Content="Play against computer" HorizontalAlignment="Left" Margin="11,33,0,0" VerticalAlignment="Top" Name="playAgainstComputerCheck"/>
+                        <CheckBox Content="Play against computer" HorizontalAlignment="Left" Margin="11,33,0,0" VerticalAlignment="Top" Name="playAgainstComputerCheck"
+                                  IsChecked="{Binding Path=PlayAgainstComputer}"/>
                         <Label Content="Number of players" HorizontalAlignment="Left" Margin="10,54,0,0" VerticalAlignment="Top"/>
-                        <ComboBox HorizontalAlignment="Left" Margin="196,58,0,0" VerticalAlignment="Top" Width="86" Name="numberofPlayersComboBox" SelectedIndex="0">
-                            <ComboBoxItem>2</ComboBoxItem>
-                            <ComboBoxItem>3</ComboBoxItem>
-                            <ComboBoxItem>4</ComboBoxItem>
-                        </ComboBox>
+                        <ComboBox HorizontalAlignment="Left" Margin="196,58,0,0" VerticalAlignment="Top" Width="86" Name="numberofPlayersComboBox"
+                                  ItemsSource="{Binding Source={StaticResource numberOfPlayersData}}"
+                                  SelectedValue="{Binding Path=NumberOfPlayers}"
+                                  IsEnabled="{Binding ElementName=playAgainstComputerCheck,Path=IsChecked,Converter={StaticResource invertBool}}"/>
                     </Grid>
                 </TabItem>
                 <TabItem Header="Computer Player">

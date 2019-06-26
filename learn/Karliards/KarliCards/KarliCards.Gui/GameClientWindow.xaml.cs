@@ -11,7 +11,7 @@ namespace KarliCards.Gui
         public GameClientWindow()
         {
             InitializeComponent();
-            var position = new Point(15, 15);
+            /*var position = new Point(15, 15);
             for (var i = 0; i < 4; i++)
             {
                 var suit = (unit13_3.Suit)i;
@@ -23,10 +23,9 @@ namespace KarliCards.Gui
                     card.VerticalAlignment = VerticalAlignment.Top;
                     card.HorizontalAlignment = HorizontalAlignment.Left;
                     card.Margin = new Thickness(position.X, position.Y, 0, 0);
-                    contentGrid.Children.Add(card);
                 }
                 position.X += 112;
-            }
+            }*/
         }
         //是否对用户可用
         private void CommandCanExecuted(object sender, CanExecuteRoutedEventArgs e)
