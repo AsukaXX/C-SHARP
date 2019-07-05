@@ -66,8 +66,8 @@
             <local:CardsInHandControl x:Name="Player3Hand" DockPanel.Dock="Bottom" HorizontalAlignment="Center"
                                       Height="154" VerticalAlignment="Top" PlayerOrientation="Horizontal" Owner="{Binding Players[2]}"
                                       Width="380" Playerstate="{Binding Players[2].State}" Game="{Binding}"/>
-            <local:GameDecksControl Height="180" x:Name="GameDeck" Deck="{Binding GameDeck}" AvailableCard="{Binding CurrentAvailableCard}"
-                                    CurrentPlayer="{Binding CurrentAvailableCard}" GameStarted="{Binding GameStarted}"/>
+            <local:GameDecksControl Height="180" x:Name="GameDecks" Deck="{Binding GameDeck}" AvailableCard="{Binding CurrentAvailableCard}"
+                                    CurrentPlayer="{Binding CurrentPlayer}" GameStarted="{Binding GameStarted}"/>
         </DockPanel>
     </Grid>
 </Window>

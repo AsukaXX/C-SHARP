@@ -76,6 +76,8 @@ namespace KarliCards.Gui
                 return;
             CreateGameDeck();
             CreatePlayers();
+            InitalizeGame();
+            GameStarted = true;
         }
         private void InitalizeGame()
         {
@@ -95,6 +97,7 @@ namespace KarliCards.Gui
             player.DrawNewHand(GameDeck);
             player.OnCardDiscarded += player_OnCardDiscarded;
             player.OnPlayerHasWon += player_OnPlayerHasWon;
+            Players.Add(player);
         }
 
         void player_OnPlayerHasWon(object sender, PlayerEventArgs e)

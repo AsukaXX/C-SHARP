@@ -113,16 +113,19 @@ namespace KarliCards.Gui
 
         private void AvailableCard_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            throw new NotImplementedException();
+            if (CurrentPlayer.State != PlayerState.Active)
+                return;
+            var control = sender as CardControl;
+            CurrentPlayer.AddCard(control.Card);
+            AvailableCard = null;
+            DrawDecks();
         }
 
         private void Deck_MouserDoubleClick(object sender, MouseButtonEventArgs e)
         {
             if (CurrentPlayer.State != PlayerState.Active)
                 return;
-            var control = sender as CardControl;
-            CurrentPlayer.AddCard(control.Card);
-            AvailableCard = null;
+            CurrentPlayer.DrawCard(Deck);
             DrawDecks();
         }
     }

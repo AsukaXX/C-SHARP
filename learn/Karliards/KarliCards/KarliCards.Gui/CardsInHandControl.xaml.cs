@@ -54,7 +54,7 @@ namespace KarliCards.Gui
         }
 
         public static readonly DependencyProperty PlayerstateProperty =
-            DependencyProperty.Register("Playerstate", typeof(PlayerState), typeof(CardsInHandControl), new PropertyMetadata(PlayerState.Inactive));
+            DependencyProperty.Register("Playerstate", typeof(PlayerState), typeof(CardsInHandControl), new PropertyMetadata(PlayerState.Inactive,new PropertyChangedCallback(OnPlayerStateChanged)));
         public Orientation PlayerOrientation
         {
             get { return (Orientation)GetValue(PlayerOrientationProperty); }
@@ -62,7 +62,7 @@ namespace KarliCards.Gui
         }
 
         public static readonly DependencyProperty PlayerOrientationProperty =
-            DependencyProperty.Register("PlayerOrientation", typeof(Orientation), typeof(CardsInHandControl), new PropertyMetadata(Orientation.Horizontal));
+            DependencyProperty.Register("PlayerOrientation", typeof(Orientation), typeof(CardsInHandControl), new PropertyMetadata(Orientation.Horizontal,new PropertyChangedCallback(OnPlayerOrientationChanged)));
         private static void OnOwnerChanged(DependencyObject source,DependencyPropertyChangedEventArgs e)
         {
             var control = source as CardsInHandControl;
@@ -99,7 +99,7 @@ namespace KarliCards.Gui
         {
             Thread.Sleep(1250);
             var data = payload as Payload;
-            Dispatcher.Invoke(DispatcherPriority.Normal, new Action<Deck>(data.Player.PerformDiscard), data.Deck);
+            Dispatcher.Invoke(DispatcherPriority.Normal, new Action<Deck,Card>(data.Player.PerformDraw), data.Deck,data.AvailableCard);
         }
 
         private static void OnPlayerOrientationChanged(DependencyObject source,DependencyPropertyChangedEventArgs e)
